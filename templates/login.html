@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="d-flex align-items-center justify-content-center" style="height: 100vh;">
+        <div class="container-md">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <form class="p-5 bg-white rounded border">
+                        <h2 class="mb-3">Login</h2>
+                        <!-- Your form fields go here -->
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control form-control" id="username" name="username">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control form-control" id="password" name="password">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
