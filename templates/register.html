@@ -1,13 +1,17 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="d-flex align-items-center justify-content-center" style="height: 90vh;">
+    <div class="d-flex align-items-center justify-content-center" style="height: 100vh;">
         <div class="container-md">
             <div class="row justify-content-center">
                 <div class="col-md-6">
                     <form method="post" action="" class="p-5 bg-white rounded border">
                         {{  form.hidden_tag() }}
-                        <h3 class="mb-3">Login</h3>
+                        <h3 class="mb-3">Register</h3>
+                        <div class="mb-2">
+                            {{ form.username.label(class="form-control-label") }}
+                            {{ form.username(class="form-control form-control") }}
+                        </div>
                         <div class="mb-2">
                             {{ form.email.label(class="form-control-label") }}
                             {{ form.email(class="form-control form-control") }}
@@ -16,12 +20,16 @@
                             {{ form.password.label(class="form-control-label") }}
                             {{ form.password(class="form-control form-control") }}
                         </div>
+                        <div class="mb-2">
+                            {{ form.confirm_password.label(class="form-control-label") }}
+                            {{ form.confirm_password(class="form-control form-control") }}
+                        </div>
                         <div class="mb-5">
                             {{ form.submit(class="btn btn-primary btn-block") }}
                         </div>
                         <div class="border-top pt-3">
                             <small>
-                                Need an Account? <a class="ml-3" href="{{ url_for('register') }}">Sign up</a>
+                                Already have an Account? <a class="ml-3" href="{{ url_for('login') }}">Sign in</a>
                             </small>
                         </div>
                     </form>
