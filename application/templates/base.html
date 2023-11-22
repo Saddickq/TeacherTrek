@@ -14,10 +14,10 @@
 </head>
 
 <body class="pt-5">
-    <header>
+    <header class="mb-3">
         <nav class="navbar navbar-dark bg-dark fixed-top">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Teacher Trek</a>
+                <a class="navbar-brand" href="{{ url_for('home') }}">Teacher Trek</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
                     aria-label="Toggle navigation">
@@ -33,14 +33,23 @@
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                             <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="#">Home</a>
+                                <a class="nav-link" aria-current="page" href="{{ url_for('home') }}">Home</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Profile</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="#">Something</a>
-                            </li>
+			    {% if current_user.is_authenticated %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                                </li>
+				<li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="{{ url_for('account') }}">Account</a>
+                                </li>
+			    {% else %}
+			        <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="{{ url_for('register') }}">Register</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="{{ url_for('login') }}">Login</a>
+                                </li>
+			    {% endif %}
                             <li class="nav-item">
                                 <a class="nav-link" aria-current="page" href="#">About</a>
                             </li>
@@ -56,6 +65,15 @@
     </header>
     <main class="container">
         <div class="container-fluid">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
             {% block content %}{% endblock %}
         </div>
     </main>

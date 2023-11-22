@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="d-flex align-items-center justify-content-center" style="height: 80vh;">
+        <div class="container-md">
+            <div class="row justify-content-center">
+                <div class="col-md-5">
+                    <form method="POST" action="" class="p-5 rounded border">
+                        {{  form.hidden_tag() }}
+                        <h3 class="mb-3">Login</h3>
+                        <div class="mb-3">
+                            {{ form.email.label(class="form-control-label") }}
+                            {% if form.email.errors %}
+                                {{ form.email(class="form-control form-control is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.email.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.email(class="form-control form-control") }}
+                            {% endif %}
+                        </div>
+                        <div class="mb-4">
+                            {{ form.password.label(class="form-control-label") }}
+                            {% if form.password.errors %}
+                                {{ form.password(class="form-control form-control is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.password.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.password(class="form-control form-control") }}
+                            {% endif %}
+                        </div>
+                        <div class="mb-2">
+                            {{ form.submit(class="btn btn-primary btn-block") }}
+                        </div>
+                        <div class="mt-4">
+                            {{ form.remember(class="check-box") }}
+                            {{ form.remember.label(class="check-box-label") }}
+                        </div>
+                        <div>
+                            <small class="text-muted mt-3">
+                                <a href="#">Forgot Password?</a> 
+                            </small>
+                        </div>
+                    </form>
+                    <div class="border-top mt-4">
+                        <small class="text-muted">
+                            Need an Account? <a class="ml-3" href="{{ url_for('register') }}">Sign up</a>
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
