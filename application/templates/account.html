@@ -1,12 +1,17 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="card mb-3">
-	<img src="{{ image_file }}" class="card-img-top" alt="User profile">
-  	<div class="card-body">
-    	    <h3 class="card-title">{{ current_user.username }}</h3>
-    	    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    	    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-  	</div>
-    </div>
+	<div class="container mt-5">
+		<div class="row">
+			<div class="col-md-4">
+				<img src="{{ image_file }}" alt="Profile Image" class="img-fluid rounded-circle" width="300" height="300">
+			</div>
+			<div class="col-md-8">
+				<h2>User Details</h2>
+				<p>Name: {{ current_user.username }}</p>
+				<p>Email: {{ current_user.email }}</p>
+				<!-- Add more user details here -->
+			</div>
+		</div>
+	</div>
 {% endblock %}
