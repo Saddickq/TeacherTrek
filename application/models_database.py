@@ -12,6 +12,7 @@ class User(db.Model, UserMixin):
     id = db.Column(db.String(36), primary_key=True, default=str(uuid4()), nullable=False)
     username = db.Column(db.String(25), nullable=False)
     email = db.Column(db.String(120), nullable=False, unique=True)
+    image_profile = db.Column(db.String(20), nullable=False, default='kids.jpg')
     date_joined = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     password = db.Column(db.String(60), nullable=True)
 
@@ -25,4 +26,4 @@ class Requests(db.Model):
     
     def __str__(self):
         """ String method """
-        return "[{self.__cls__.__name__} ({self.id} {self.__dict__})]"
+        return f'<Request made on {self.request_made_on}>'
