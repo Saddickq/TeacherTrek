@@ -1,3 +1,5 @@
 setup_database.sql
 instance/
 application/__pycache__/
+instance/
+.idea/
