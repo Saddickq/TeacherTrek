@@ -1,14 +1,5 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div id="landing-page">
-        <h1>TEACHER TREK</h1>
-        <h2>Every Teacher Deserves to Work Where They Are Comfortable</h2>
-        <h3>Why Choose Us?</h3>
-        <ul>
-            <li>Our mission is to help every teacher find their perfect match.</li>
-            <li>No child should go untaught.</li>
-            <li>No school should miss a teacher or hold on to a teacher due to teacher transfers.</li>
-        </ul>
-    </div>
+    <h1>Welcome {{ current_user.username }} :)</h1>
 {% endblock %}
