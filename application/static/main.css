@@ -1,0 +1,56 @@
+.landing-page {
+    text-align: center;
+    padding: 50px;
+    background-color: #f4f4f4; /* Add a background color for contrast */
+    border-radius: 10px; /* Optional: Add rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}
+
+h1 {
+    color: #333; /* Set heading color */
+}
+
+h2, h3 {
+    color: #555; /* Set subheading color */
+}
+
+ul {
+    list-style-type: none; /* Remove default list styling */
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px; /* Add spacing between list items */
+}
+
+body {
+    background: #fafafa;
+    color: #333333;
+}
+
+.blue-background {
+    background-color: blue;
+}
+
+.content-section {
+    background: #ffffff;
+    padding: 10px 30px;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    margin-bottom: 10px;
+}
+
+.account-img {
+    height: 120px;
+    width: 120px;
+    margin-right: 20px;
+    margin-bottom: 16px;
+}
+
+.account-img {
+    height: 125px;
+    width: 125px;
+    margin-right: 20px;
+    margin-bottom: 16px;
+}
+  

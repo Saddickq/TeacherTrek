@@ -1,14 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div id="landing-page">
-        <h1>TEACHER TREK</h1>
-        <h2>Every Teacher Deserves to Work Where They Are Comfortable</h2>
-        <h3>Why Choose Us?</h3>
-        <ul>
-            <li>Our mission is to help every teacher find their perfect match.</li>
-            <li>No child should go untaught.</li>
-            <li>No school should miss a teacher or hold on to a teacher due to teacher transfers.</li>
-        </ul>
+    <div class="row row-cols-1 row-cols-md-2 g-4 mt-4">
+        {% for request in requests %}
+            <div class="col">
+                <div class="card h-100">
+                    <img src="{{ url_for('static', filename='images/' + request.teacher.image_profile) }}" class="card-img-top" alt="User Profile Picture">
+                    <div class="card-body">
+                        <a class="card-title" href="#">{{ request.teacher.username }}</a>
+                        <p class="card-text">{{ request.teacher.username }} is from {{ request.county }}.</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-body-secondary">{{ request.request_made_on }}</small>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
     </div>
 {% endblock %}

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form method="POST" action="" class="row g-3 col-md-8 border p-5 mt-5 mx-auto rounded">
+        {{  form.hidden_tag() }}
+        <h3 class="mb-2">Transfer Form</h3>
+        <!--current school field-->
+        <div class="col-md-6">
+            {{ form.school.label(class="form-label") }}
+            {% if form.school.errors %}
+                {{ form.school(class="form-control is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.school.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{ form.school(class="form-control") }}
+            {% endif %}
+        </div>
+        <!--Teaching subjects field-->
+        <div class="col-md-6">
+            {{ form.subjects.label(class="form-label") }}
+            {% if form.subjects.errors %}
+                {{ form.subjects(class="form-control is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.subjects.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{ form.subjects(class="form-control") }}
+            {% endif %}    
+        </div>
+        <!-- current location field -->
+        <div class="col-md-6">
+            {{ form.county.label(class="form-label") }}
+            {{ form.county(class="form-select", id="county") }}
+        </div>
+        <!-- transfer destination field -->
+        <div class="col-md-6">
+            {{ form.destination.label(class="form-label") }}
+            {{ form.destination(class="form-select", id="destination") }}
+        </div>
+        <!-- Purpose of Transfer field -->
+        <div class="col-12">
+            {{ form.purpose.label(class="form-label") }}
+            {{ form.purpose(class="form-control") }}
+        </div>
+        <!--request button field-->
+        <div class="col-12">
+            {{ form.submit(class="btn btn-primary") }}
+        </div>
+    </form>
+{% endblock %}
