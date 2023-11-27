@@ -1,17 +1,22 @@
-.landing-page {
-    text-align: center;
-    padding: 50px;
-    background-color: #f4f4f4; /* Add a background color for contrast */
-    border-radius: 10px; /* Optional: Add rounded corners */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
-}
 
-h1 {
-    color: #333; /* Set heading color */
+.landing-page{
+  background-color: transparent; /* Add a background color for contrast */
+  opacity: 1;
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  justify-content: center;
+  height: 90vh;
 }
-
-h2, h3 {
-    color: #555; /* Set subheading color */
+.landing-page h1 {
+  font-size: 4.5rem;
+  color: #fff;
+  font-family: "ubuntu",sans-serif;
+}
+.landing-page h2, h3 {
+  color: #fff;
+  line-height: 2;
+  margin-top: 1rem;
 }
 
 ul {
@@ -20,17 +25,26 @@ ul {
 }
 
 li {
+    text-shadow: 4px 4px px #000000;
+    color: #ffffff;
     margin-bottom: 10px; /* Add spacing between list items */
 }
+
+section video{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
 
 body {
     background: #fafafa;
     color: #333333;
 }
 
-.blue-background {
-    background-color: blue;
-}
 
 .content-section {
     background: #ffffff;
@@ -52,5 +66,9 @@ body {
     width: 125px;
     margin-right: 20px;
     margin-bottom: 16px;
+}
+
+.nav-link {
+    color: rgba(0, 0, 0, 0.596);
 }
   
