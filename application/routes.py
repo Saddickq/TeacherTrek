@@ -1,9 +1,10 @@
 import secrets
 import os
+from PIL import Image
 from flask import render_template, redirect, url_for, flash, request
 from application import app, bcrypt, db
-from application.forms import RegistrationForm, LoginForm, UpdateAccountForm
-from application.models_database import User, Requests
+from application.forms import RegistrationForm, LoginForm, UpdateAccountForm, RequestForm
+from application.models_database import User, Request
 from flask_login import login_user, current_user, logout_user, login_required
 
 
@@ -13,7 +14,8 @@ def welcome():
 
 @app.route('/home')
 def home():
-    return render_template('home.html', title='home')
+    requests = Request.query.all()
+    return render_template('home.html', title='home', requests=requests)
 
 @app.route('/about')
 def about():
@@ -68,11 +70,12 @@ def save_profile_picture(form_picture):
     _, file_ext = os.path.splitext(form_picture.filename)
     picture_file_name = random + file_ext
     picture_path = os.path.join(app.root_path, 'static/images', picture_file_name)
-    form_picture.save(picture_path)
-    
-    print(f'Filename: {form_picture.filename}')
-    print(f'Extension: {file_ext}')
-    
+
+    output_size = (135, 135)
+    img = Image.open(form_picture)
+    img.thumbnail(output_size)
+    img.save(picture_path)
+
     return picture_file_name
 
 @app.route('/account', methods=['POST', 'GET'])
@@ -93,3 +96,21 @@ def account():
         form.email.data = current_user.email
     profile_pic = url_for('static', filename='images/' + current_user.image_profile)
     return render_template('account.html', title='Account', image_file=profile_pic, form=form)
+
+@app.route('/request/new', methods=['POST', 'GET'])
+def create_request():
+    form = RequestForm()
+    if form.validate_on_submit():
+        school = form.school.data
+        subjects = form.subjects.data
+        county = form.county.data
+        destination = form.destination.data
+        purpose = form.purpose.data
+        request = Request(school=school, subjects=subjects, county=county,
+                          destination=destination, purpose=purpose, teacher=current_user)
+        with app.app_context():
+            db.session.add(request)
+            db.session.commit()
+        flash("congrats your transfer have been requested for", "success")
+        return redirect(url_for('home'))
+    return render_template("create_request.html", title='Take Transfer', form=form)

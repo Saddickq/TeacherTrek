@@ -2,7 +2,7 @@
 
 {% block content %}
     <div class="container-fluid col-md-8">
-        <div class="media d-flex flex-row content-section">
+        <div class="media d-flex flex-row content-section bg-info shadow">
             <img src="{{ image_file }}" alt="Profile Image" class="rounded-circle account-img mr-3">
             <div class="media-body">
                 <h2 class="media-heading">{{ current_user.username }}</h2>
@@ -41,14 +41,17 @@
                         {{ form.email(class="form-control form-control") }}
                     {% endif %}
                 </div>
+                <!--choose picture field-->
                 <div class="mb-2">
-                    {{ form.picture.label() }}<br>
-                    {{ form.picture(class="form-control-file") }}
-                    {% if form.picture.errors %}
-                        {% for error in form.email.errors %}
-                            <span class="text-danger">{{ error }}</span>
-                        {% endfor %}
-                    {% endif %}
+                    {{ form.picture.label(class="custom-file-label") }}<br>
+                    <div class="custom-file">
+                        {{ form.picture(class="custom-file-input") }}
+                        {% if form.picture.errors %}
+                            {% for error in form.email.errors %}
+                                <span class="text-danger">{{ error }}</span><br>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
                 </div>
                 <div class="form-group">
                     {{ form.submit(class="btn btn-primary btn-block") }}
