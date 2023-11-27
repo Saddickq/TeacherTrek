@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
-from wtforms import StringField, PasswordField, SubmitField, BooleanField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField, SelectField
 from flask_login import current_user
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from application.models_database import User
@@ -50,3 +50,15 @@ class UpdateAccountForm(FlaskForm):
             user = User.query.filter_by(email=email.data).first()
             if user:
                 raise ValidationError("This email already exist, please try a different email")
+
+class RequestForm(FlaskForm):
+    sub_county = [('Teso South', 'Teso South'), ('Teso North', 'Teso North'),
+                  ('Teso Central', 'Teso Central'), ('Nambale', 'Nambale'), ('Budalangi', 'Budalangi')]
+    
+    school = StringField('Current School', validators=[DataRequired()])
+    subjects = StringField('Teaching Subjects', validators=[DataRequired()])
+    county = SelectField('Current Sub-county', choices=sub_county, validators=[DataRequired()])
+    destination = SelectField('Destination Sub-county', choices=sub_county, validators=[DataRequired()])
+    purpose = TextAreaField("What is your reason for the transfer")
+    submit = SubmitField("Create Request")
+ 
