@@ -52,12 +52,13 @@ class UpdateAccountForm(FlaskForm):
                 raise ValidationError("This email already exist, please try a different email")
 
 class RequestForm(FlaskForm):
-    countys = [('city1', 'City 1'), ('city2', 'City 2'), ('city3', 'City 3'), ('city10', 'City 10')]
+    sub_county = [('Teso South', 'Teso South'), ('Teso North', 'Teso North'),
+                  ('Teso Central', 'Teso Central'), ('Nambale', 'Nambale'), ('Budalangi', 'Budalangi')]
     
     school = StringField('Current School', validators=[DataRequired()])
     subjects = StringField('Teaching Subjects', validators=[DataRequired()])
-    county = SelectField('Current Location', choices=countys, validators=[DataRequired()])
-    destination = SelectField('Transfer Destination', choices=countys, validators=[DataRequired()])
+    county = SelectField('Current Sub-county', choices=sub_county, validators=[DataRequired()])
+    destination = SelectField('Destination Sub-county', choices=sub_county, validators=[DataRequired()])
     purpose = TextAreaField("What is your reason for the transfer")
     submit = SubmitField("Create Request")
  
