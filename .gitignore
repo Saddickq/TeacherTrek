@@ -1,6 +1,4 @@
-setup_database.sql
-instance/
 application/__pycache__/
 instance/
 .idea/
-instance/database.db
+application/static/images/gray.png

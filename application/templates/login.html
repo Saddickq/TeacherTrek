@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="d-flex align-items-center justify-content-center" style="height: 80vh;">
+    <div class="d-flex align-items-center mt-3 justify-content-center" style="height: 80vh;">
         <div class="container-md">
             <div class="row justify-content-center">
-                <div class="col-md-5">
-                    <form method="POST" action="" class="p-5 rounded border shadow">
+                <div class="col-md-6">
+                    <form method="POST" action="" class="p-5 rounded border-info shadow">
                         {{  form.hidden_tag() }}
-                        <h3 class="mb-3">Login</h3>
+                        <h2 class="mb-3 text-info">Login</h2>
                         <div class="mb-3">
                             {{ form.email.label(class="form-control-label") }}
                             {% if form.email.errors %}
@@ -35,7 +35,7 @@
                             {% endif %}
                         </div>
                         <div class="mb-2">
-                            {{ form.submit(class="btn btn-primary btn-block") }}
+                            {{ form.submit(class="btn btn-info text-light btn-block") }}
                         </div>
                         <div class="mt-4">
                             {{ form.remember(class="check-box") }}

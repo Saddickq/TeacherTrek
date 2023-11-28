@@ -20,7 +20,7 @@
 
 <body class="pt-5">
     <header class="mb-3">
-        <nav class="navbar navbar-dark bg-info fixed-top">
+        <nav class="navbar navbar-dark shadow bg-info fixed-top">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url_for('home') }}">Teacher Trek</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
@@ -28,11 +28,11 @@
                     aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="offcanvas offcanvas-end text-bg-info" tabindex="-1" id="offcanvasDarkNavbar"
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasDarkNavbar"
                     aria-labelledby="offcanvasDarkNavbarLabel">
                     <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Dashboard</h5>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                        <h4 class="offcanvas-title text-light" id="offcanvasDarkNavbarLabel">Dashboard</h4>
+                        <button type="button" class="btn-close btn-close-dark" data-bs-dismiss="offcanvas"
                             aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body">
@@ -40,11 +40,6 @@
                             <li class="nav-item">
                                 <a class="nav-link" aria-current="page" href="{{ url_for('home') }}">Home</a>
                             </li>
-			    {% if current_user.is_authenticated %}
-
-                                <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="{{ url_for('home') }}">Home</a>
-                                </li>
                                 {% if current_user.is_authenticated %}
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>

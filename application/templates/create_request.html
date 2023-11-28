@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <form method="POST" action="" class="row g-3 col-md-8 border p-5 mt-5 mx-auto rounded">
+    <form method="POST" action="" class="row g-3 col-md-8 border p-5 mt-4 mx-auto rounded">
         {{  form.hidden_tag() }}
-        <h3 class="mb-2">Transfer Form</h3>
+        <h2 class="mb-2 text-info">Transfer Form</h2>
         <!--current school field-->
         <div class="col-md-6">
             {{ form.school.label(class="form-label") }}
@@ -49,7 +49,7 @@
         </div>
         <!--request button field-->
         <div class="col-12">
-            {{ form.submit(class="btn btn-primary") }}
+            {{ form.submit(class="btn text-light btn-info") }}
         </div>
     </form>
 {% endblock %}
