@@ -29,6 +29,7 @@ li {
     color: #ffffff;
     margin-bottom: 10px; /* Add spacing between list items */
 }
+
 section video{
     position: absolute;
     top: 0;
@@ -38,6 +39,13 @@ section video{
     object-fit: cover;
     z-index: -1;
   }
+
+body {
+    background: #fafafa;
+    color: #333333;
+}
+
+
 .content-section {
     background: #ffffff;
     padding: 10px 30px;
