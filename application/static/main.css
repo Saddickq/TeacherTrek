@@ -63,4 +63,11 @@ section video{
 .nav-link {
     color: rgba(0, 0, 0, 0.596);
 }
+
+@media screen and (max-width: 700px) {
+  .sideImage {
+    width: 300px;
+    height: 300px;
+  }
+}
   

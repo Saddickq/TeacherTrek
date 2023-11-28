@@ -3,11 +3,14 @@
 {% block content %}
     <div class="d-flex align-items-center justify-content-center" style="height: 90vh;">
         <div class="container-md">
-            <div class="row justify-content-center">
+            <div class="d-flex justify-content-around">
+                <div class="sideImage">
+                    <img src="static/images/Happy teacher.jpg" alt="picture of a happy teacher" width="600" height="500">
+                </div>
                 <div class="col-md-6">
                     <form method="POST" action="" class="p-5 rounded border shadow">
                         {{  form.hidden_tag() }}
-                        <h3 class="mb-2">Register</h3>
+                        <h1 class="mb-3">Sign Up</h1>
                         <!--username field-->
                         <div class="mb-2">
                             {{ form.username.label(class="form-control-label") }}
