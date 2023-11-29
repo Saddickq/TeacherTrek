@@ -28,8 +28,14 @@ class Request(db.Model):
     destination = db.Column(db.String(30), nullable=False)
     purpose = db.Column(db.Text(), nullable=True)
     teacher_id = db.Column(db.String(36), db.ForeignKey('user.id'), nullable=False)
-
     
+    def to_dict(self):
+        dictionary = {}
+        for key, value in self.__dict__.items():
+            dictionary[key] = str(value)
+        dictionary.pop('_sa_instance_state')
+        return dictionary
+            
     def __str__(self):
         """ String method """
-        return f'<Request made on {self.request_made_on}>'
+        return f'Request made on {self.request_made_on}'

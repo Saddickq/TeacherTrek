@@ -1,7 +1,7 @@
 import secrets
 import os
 from PIL import Image
-from flask import render_template, redirect, url_for, flash, request
+from flask import render_template, redirect, url_for, flash, request, session
 from application import app, bcrypt, db
 from application.forms import RegistrationForm, LoginForm, UpdateAccountForm, RequestForm
 from application.models_database import User, Request
@@ -12,10 +12,20 @@ from flask_login import login_user, current_user, logout_user, login_required
 def welcome():
     return render_template('landing_page.html', title='welcome')
 
+def get_match_county():
+    user_request = Request.query.filter_by(teacher_id=current_user.id).first()
+    if user_request:
+        match_request = Request.query.filter_by(destination=user_request.destination).first()
+        if match_request:
+            return match_request
+    return None
+
 @app.route('/home')
 def home():
-    requests = Request.query.all()
-    return render_template('home.html', title='home', requests=requests)
+    match = get_match_county()
+    user_request = Request.query.filter_by(teacher_id=current_user.id).first()
+    return render_template('home.html', title='home', user_request=user_request, match=match)
+    
 
 @app.route('/about')
 def about():
@@ -43,9 +53,6 @@ def register():
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
-    if current_user.is_authenticated:
-        return redirect(url_for('home'))
-
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
@@ -98,6 +105,7 @@ def account():
     return render_template('account.html', title='Account', image_file=profile_pic, form=form)
 
 @app.route('/request/new', methods=['POST', 'GET'])
+@login_required
 def create_request():
     form = RequestForm()
     if form.validate_on_submit():
