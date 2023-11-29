@@ -22,9 +22,9 @@ def get_match_county():
 
 @app.route('/home')
 def home():
-    match = get_match_county()
+    # match = get_match_county()
     user_request = Request.query.filter_by(teacher_id=current_user.id).first()
-    return render_template('home.html', title='home', user_request=user_request, match=match)
+    return render_template('home.html', title='home', user_request=user_request)
     
 
 @app.route('/about')
