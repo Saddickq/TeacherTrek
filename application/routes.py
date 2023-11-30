@@ -166,3 +166,15 @@ def update_request(request_id):
         form.destination.data = req.destination
         form.purpose.data = req.purpose
     return render_template('create_request.html', title='Update Request', form=form, form_title='Update Request')
+
+
+@app.route('/request/<string:request_id>/delete', methods=['POST'])
+@login_required
+def delete_request(request_id):
+    req = Request.query.get_or_404(request_id)
+    if req.teacher != current_user:
+        abort(403)
+    db.session.delete(req)
+    db.session.commit()
+    flash("You have successfully deleted your made request", "success")
+    return redirect(url_for('home'))
