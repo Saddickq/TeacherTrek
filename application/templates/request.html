@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row row-cols-1 w-20 row-cols-md-2 g-4 mt-4">
+        <div class="col">
+            <div class="card h-100">
+                <img src="{{ url_for('static', filename='images/' + request.teacher.image_profile) }}" class="card-img-top account-img" alt="User Profile Picture"  style="max-width: 90%;">
+                <div class="card-body">
+                    <h2 class="card-title">{{ request.teacher.username }}</h2>
+                    <h4 class="card-text">{{ request.teacher.username }} is from {{ request.county }}.<br>
+                        Going to {{ request.destination }}</h4>
+                    <p class="border-top">{{ request.purpose }}</p>
+                    {% if request.teacher == current_user %}
+                        <a class="btn btn-info text-light" href="{{ url_for('update_request', request_id=request.id) }}">Update</a>
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteBackdrop">Delete</button>
+                    {% endif %}
+                </div>
+                <div class="card-footer">
+                    <small class="text-body-secondary">made on {{ request.request_made_on.strftime('%B, %d %Y') }}</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="deleteBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleteBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="deleteBackdropLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete your transfer request?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

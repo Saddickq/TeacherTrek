@@ -2,32 +2,32 @@
 
 {% block content %}
     <div class="row row-cols-1 w-20 row-cols-md-2 g-4 mt-4">
-        <!-- {% if match %}
-            <div class="col">
-                <div class="card h-100">
-                    <img src="{{ url_for('static', filename='images/' + match.teacher.image_profile) }}" class="card-img-top account-img" alt="User Profile Picture"  style="max-width: 90%;">
-                    <div class="card-body">
-                        <a class="card-title" href="#">{{ match.teacher.username }}</a>
-                        <p class="card-text">{{ match.teacher.username }} is from {{ match.county }}.<br>
-                            Going to {{ match.destination }}</p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-body-secondary">{{ match.request_made_on }}</small>
-                    </div>
-                </div>
-            </div>
-        {% endif %} -->
         {% if user_request %}
             <div class="col">
                 <div class="card h-100">
                     <img src="{{ url_for('static', filename='images/' + user_request.teacher.image_profile) }}" class="card-img-top account-img" alt="User Profile Picture"  style="max-width: 90%;">
                     <div class="card-body">
-                        <a class="card-title" href="#">{{ user_request.teacher.username }}</a>
+                        <a class="card-title" href="{{ url_for('show_request', request_id=user_request.id) }}">{{ user_request.teacher.username }}</a>
                         <p class="card-text">{{ user_request.teacher.username }} is from {{ user_request.county }}.<br>
                             Going to {{ user_request.destination }}</p>
                     </div>
                     <div class="card-footer">
-                        <small class="text-body-secondary">{{ user_request.request_made_on }}</small>
+                        <small class="text-body-secondary">made on {{ user_request.request_made_on.strftime('%B, %d %Y') }}</small>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {% if match %}
+            <div class="col">
+                <div class="card h-100">
+                    <img src="{{ url_for('static', filename='images/' + match.teacher.image_profile) }}" class="card-img-top account-img" alt="User Profile Picture"  style="max-width: 90%;">
+                    <div class="card-body">
+                        <a class="card-title" href="{{ url_for('show_request', request_id=match.id) }}">{{ match.teacher.username }}</a>
+                        <p class="card-text">{{ match.teacher.username }} is from {{ match.county }}.<br>
+                            Going to {{ match.destination }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-body-secondary">{{ match.request_made_on.strftime('%B, %d %Y') }}</small>
                     </div>
                 </div>
             </div>

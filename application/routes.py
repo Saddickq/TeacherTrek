@@ -1,7 +1,7 @@
 import secrets
 import os
 from PIL import Image
-from flask import render_template, redirect, url_for, flash, request, session
+from flask import render_template, redirect, url_for, flash, request, abort
 from application import app, bcrypt, db
 from application.forms import RegistrationForm, LoginForm, UpdateAccountForm, RequestForm
 from application.models_database import User, Request
@@ -15,17 +15,21 @@ def welcome():
 def get_match_county():
     user_request = Request.query.filter_by(teacher_id=current_user.id).first()
     if user_request:
-        match_request = Request.query.filter_by(destination=user_request.destination).first()
+        match_request = Request.query.filter(
+            (Request.destination == user_request.county) & 
+            (Request.teacher_id != current_user.id) ).first()
         if match_request:
             return match_request
     return None
 
 @app.route('/home')
 def home():
-    # match = get_match_county()
-    user_request = Request.query.filter_by(teacher_id=current_user.id).first()
-    return render_template('home.html', title='home', user_request=user_request)
-    
+    if current_user.is_authenticated:
+        match = get_match_county()
+        user_request = Request.query.filter_by(teacher_id=current_user.id).first()
+        return render_template('home.html', title='home', match=match, user_request=user_request)
+    else:
+        return redirect(url_for('login'))
 
 @app.route('/about')
 def about():
@@ -56,12 +60,13 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
-        is_password = bcrypt.check_password_hash(user.password, form.password.data)
-        if user and is_password:
-            login_user(user, remember=form.remember.data)
-            return redirect(url_for('home'))
+        if user:
+            if bcrypt.check_password_hash(user.password, form.password.data):       
+                login_user(user, remember=form.remember.data)
+                return redirect(url_for('home'))
+            flash("Login Unsuccessful, Incorrect Password!", "danger")
         else:
-            flash("Login Unsuccessful, Please check email and password!", "danger")
+            flash("Login Unsuccessful, Incorrect email!", "danger")
     return render_template('login.html', title='Login', form=form)
 
 
@@ -114,6 +119,12 @@ def create_request():
         county = form.county.data
         destination = form.destination.data
         purpose = form.purpose.data
+        
+        """existing_request = Request.query.filter_by(teacher=current_user)
+        if existing_request:
+            flash("Sorry you can only make one request at a time", "warning")
+            return redirect(url_for('home'))"""
+        
         request = Request(school=school, subjects=subjects, county=county,
                           destination=destination, purpose=purpose, teacher=current_user)
         with app.app_context():
@@ -121,4 +132,37 @@ def create_request():
             db.session.commit()
         flash("congrats your transfer have been requested for", "success")
         return redirect(url_for('home'))
-    return render_template("create_request.html", title='Take Transfer', form=form)
+    return render_template("create_request.html", title='Take Transfer', form=form, form_title='Transfer Form')
+
+
+
+@app.route('/request/<string:request_id>', methods=['POST', 'GET'])
+@login_required
+def show_request(request_id):
+    request = Request.query.get_or_404(request_id)
+    return render_template('request.html', title=request.teacher.username, request=request)
+
+
+@app.route('/request/<string:request_id>/update', methods=['POST', 'GET'])
+@login_required
+def update_request(request_id):
+    req = Request.query.get_or_404(request_id)
+    if req.teacher != current_user:
+        abort(403)
+    form = RequestForm()
+    if form.validate_on_submit():
+        req.school = form.school.data
+        req.subjects = form.subjects.data
+        req.county = form.county.data
+        req.destination = form.destination.data
+        req.purpose = form.purpose.data
+        db.session.commit()
+        flash("Your Transfer Request has been Updated Successfully", "success")
+        return redirect(url_for('show_request', request_id=req.id))
+    elif request.method == 'GET':
+        form.school.data = req.school
+        form.subjects.data = req.subjects
+        form.county.data = req.county
+        form.destination.data = req.destination
+        form.purpose.data = req.purpose
+    return render_template('create_request.html', title='Update Request', form=form, form_title='Update Request')

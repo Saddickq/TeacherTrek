@@ -3,7 +3,7 @@
 {% block content %}
     <form method="POST" action="" class="row g-3 col-md-8 border p-5 mt-4 mx-auto rounded">
         {{  form.hidden_tag() }}
-        <h2 class="mb-2 text-info">Transfer Form</h2>
+        <h2 class="mb-2 text-info">{{ form_title }}</h2>
         <!--current school field-->
         <div class="col-md-6">
             {{ form.school.label(class="form-label") }}
