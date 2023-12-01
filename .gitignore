@@ -2,3 +2,4 @@ application/__pycache__/
 instance/
 .idea/
 application/static/images/gray.png
+application/static/images/
