@@ -1,22 +1,25 @@
 
 .landing-page{
-  background-color: transparent; /* Add a background color for contrast */
-  opacity: 1;
+  font-family: "Quicksand", sans-serif;
   display: flex;
-  flex-direction: column;
   width: 60%;
-  justify-content: center;
+  justify-content: space-evenly;
   height: 90vh;
+  width: 100%;
 }
 .landing-page h1 {
   font-size: 4.5rem;
-  color: #fff;
+  color: #0f0f0f;
   font-family: "ubuntu",sans-serif;
 }
 .landing-page h2, h3 {
-  color: #fff;
+  color: #141313;
   line-height: 2;
   margin-top: 1rem;
+}
+
+.landingImage {
+  border-radius: 20px;
 }
 
 ul {
@@ -26,19 +29,10 @@ ul {
 
 li {
     text-shadow: 4px 4px px #000000;
-    color: #ffffff;
+    color: #0e0101;
     margin-bottom: 10px; /* Add spacing between list items */
 }
 
-section video{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
-  }
 
 body {
     background: #fafafa;
@@ -69,7 +63,19 @@ body {
 }
 
 .nav-link {
-    color: rgba(0, 0, 0, 0.596);
+  color: white
+}
+.nav-link:hover {
+  color: rgba(255, 255, 255, 0.74)
+}
+.navbar-dark {
+  background: linear-gradient(to right, #07cfe9, #065964);
+}
+.offcanvas {
+  background: #098a9b
+}
+.navbartogglericon {
+    color: #860B03;
 }
 
 @media screen and (max-width: 700px) {
