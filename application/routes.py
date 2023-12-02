@@ -120,10 +120,10 @@ def create_request():
         destination = form.destination.data
         purpose = form.purpose.data
         
-        """existing_request = Request.query.filter_by(teacher=current_user)
+        existing_request = Request.query.filter_by(teacher_id=current_user.id).first()
         if existing_request:
             flash("Sorry you can only make one request at a time", "warning")
-            return redirect(url_for('home'))"""
+            return redirect(url_for('home'))
         
         request = Request(school=school, subjects=subjects, county=county,
                           destination=destination, purpose=purpose, teacher=current_user)
