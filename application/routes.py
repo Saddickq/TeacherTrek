@@ -122,7 +122,7 @@ def create_request():
         
         existing_request = Request.query.filter_by(teacher_id=current_user.id).first()
         if existing_request:
-            flash("Sorry you can only make one request at a time", "warning")
+            flash("Sorry you can only make one request at a time! kindly edit the existing request", "warning")
             return redirect(url_for('home'))
         
         request = Request(school=school, subjects=subjects, county=county,
@@ -130,7 +130,7 @@ def create_request():
         with app.app_context():
             db.session.add(request)
             db.session.commit()
-        flash("congrats your transfer have been requested for", "success")
+        flash("congrats your transfer request has been created successfully", "success")
         return redirect(url_for('home'))
     return render_template("create_request.html", title='Take Transfer', form=form, form_title='Transfer Form')
 
