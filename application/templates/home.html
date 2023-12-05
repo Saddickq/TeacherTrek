@@ -9,6 +9,8 @@
                     <div class="card-body">
                         <h2><a class="card-title" href="{{ url_for('show_request', request_id=user_request.id) }}">{{ user_request.teacher.username }}</a></h2>
                         <p class="card-text">{{ user_request.teacher.username }} is from {{ user_request.county }}.<br>
+                            Teaching Combination: {{ user_request.subjects }}<br>
+                            current school: {{ user_request.school }}<br>
                             Going to {{ user_request.destination }}</p>
                     </div>
                     <div class="card-footer">
@@ -17,20 +19,24 @@
                 </div>
             </div>
         {% endif %}
-        {% if match %}
-            <div class="col">
-                <div class="card h-100">
-                    <img src="{{ url_for('static', filename='images/' + match.teacher.image_profile) }}" class="card-img-top account-img" alt="User Profile Picture"  style="max-width: 90%;">
-                    <div class="card-body">
-                        <h2><a class="card-title" href="{{ url_for('show_request', request_id=match.id) }}">{{ match.teacher.username }}</a></h2>
-                        <p class="card-text">{{ match.teacher.username }} is from {{ match.county }}.<br>
-                            Going to {{ match.destination }}</p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-body-secondary">Made on {{ match.request_made_on.strftime('%B, %d %Y') }}</small>
+        {% if matches %}
+            {% for match in matches %}
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="{{ url_for('static', filename='images/' + match.teacher.image_profile) }}" class="card-img-top account-img" alt="User Profile Picture"  style="max-width: 90%;">
+                        <div class="card-body">
+                            <h2><a class="card-title" href="{{ url_for('show_request', request_id=match.id) }}">{{ match.teacher.username }}</a></h2>
+                            <p class="card-text">{{ match.teacher.username }} is from {{ match.county }}.<br>
+                                Teaching Combination: {{ match.subjects }}<br>
+                                current school: {{ match.school }}<br>
+                                Going to {{ match.destination }}</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-body-secondary">Made on {{ match.request_made_on.strftime('%B, %d %Y') }}</small>
+                        </div>
                     </div>
                 </div>
-            </div>
+            {% endfor %}
         {% endif %}
     </div>
 {% endblock %}

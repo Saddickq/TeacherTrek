@@ -5,10 +5,30 @@ from flask_login import UserMixin
 
 @login_manager.user_loader
 def load_user(user_id):
+    """
+    Load user from the database based on the provided user_id
+    Parameters:
+        user_id: id of the user to load
+    Returns:
+        The loaded User object
+    """
     return User.query.get(user_id)
 
 
 class User(db.Model, UserMixin):
+    """
+    Model representing a user in the database and inheriting from the UserMixin and db.Model
+    Attributes:
+        id(str): The id of the user
+        username(str): The username of the user
+        email(str): The email of the user
+        image_profile(str): The filename of the profile picture of the user
+        password(str): The hashed password of the user
+        requests(Relationship): The requests made by the user
+
+        Methods:
+        __repr__(): String representation of the User object.
+    """
     id = db.Column(db.String(36), primary_key=True, default=lambda: str(uuid4()), nullable=False)
     username = db.Column(db.String(25), nullable=False)
     email = db.Column(db.String(120), nullable=False, unique=True)
@@ -17,9 +37,31 @@ class User(db.Model, UserMixin):
     requests = db.relationship('Request', backref='teacher', lazy=True)
 
     def __repr__(self):
+        """ 
+        String method 
+        Returns:
+            The string representation of the User object
+        """
         return f'<User {self.username} Email {self.email}>'
 
 class Request(db.Model):
+    """
+        Represents a request made by a teacher.
+
+        Attributes:
+            id (str): The unique identifier of the request.
+            request_made_on (DateTime): The date and time when the request was made.
+            school (str): The name of the current school where the teacher is stationed.
+            subjects (str): The subjects taught by the teacher.
+            county (str): The current county where the teacher is stationed.
+            destination (str): The destination county where the teacher intends to transfer.
+            purpose (str): The purpose of the request.
+            teacher_id (str): The ID of the teacher who made the request.
+        
+        Methods:
+            to_dict(): Converts the object to a dictionary representation.
+            __str__(): String representation of the Request object.
+    """
     id = db.Column(db.String(36), primary_key=True, nullable=False, default=lambda: str(uuid4()))
     request_made_on = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     school = db.Column(db.String(30), nullable=False)
@@ -30,6 +72,13 @@ class Request(db.Model):
     teacher_id = db.Column(db.String(36), db.ForeignKey('user.id'), nullable=False)
     
     def to_dict(self):
+        """
+        Converts the object to a dictionary representation.
+        Returns:
+            dictionary (dict): A dictionary representation of the object,
+            where each key is an attribute name and each value is the string
+            representation of the attribute value.
+        """
         dictionary = {}
         for key, value in self.__dict__.items():
             dictionary[key] = str(value)
@@ -37,5 +86,9 @@ class Request(db.Model):
         return dictionary
             
     def __str__(self):
-        """ String method """
+        """ 
+        String method 
+        Returns:
+            The string representation of the Request object
+        """
         return f'Request made on {self.request_made_on}'
