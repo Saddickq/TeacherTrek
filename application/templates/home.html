@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="media d-flex flex-row home-section">
+    <div class="media d-flex mt-4 flex-row home-section">
         <img src="{{ image_file }}" alt="Profile Image" class="rounded-circle home-img mr-3">
         <div class="media-body">
             <h1 class="home-font text-light">Welcome {{ current_user.username }}</h1>
-            <h5 class="text-light">Your requests and matched requests will appear here :)</h5>
+            <h5 class="text-light">Your transfer requests and matched transfer requests will appear here :)</h5>
         </div>
     </div>
     <div class="row row-cols-1 w-20 row-cols-md-2 g-4 mt-4">

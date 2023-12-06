@@ -32,7 +32,6 @@ class RegistrationForm(FlaskForm):
         - confirm_password:
             - DataRequired: Ensures that the confirm_password field is not submitted empty.
             - EqualTo('password'): Validates that the confirm_password matches the password.
-
     """
     username = StringField('Username', validators=[DataRequired(), Length(min=3, max=20)])
     email = StringField('Email', validators=[DataRequired(), Email()])

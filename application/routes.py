@@ -197,7 +197,7 @@ def create_request():
     form = RequestForm()
     if form.validate_on_submit():
         school = form.school.data
-        subjects = ', '.join(form.subjects.data)
+        subjects = form.subjects.data
         county = form.county.data
         destination = form.destination.data
         purpose = form.purpose.data
