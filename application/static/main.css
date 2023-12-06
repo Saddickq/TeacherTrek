@@ -42,6 +42,29 @@ li {
     margin-bottom: 10px;
 }
 
+.home-font {
+    font-family: 'Verdana', 'Geneva', sans-serif;
+    /* font-family: 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif;
+    font-family: 'Roboto', 'Arial', sans-serif;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-family: 'Cambria', 'Georgia', serif; */
+
+}
+
+.home-section {
+    background: linear-gradient(to right, #07cfe9, #065964);
+    padding: 10px 30px;
+    border-radius: 3px;
+    margin-bottom: 10px
+}
+
+.home-img {
+    height: 85px;
+    width: 85px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
 .account-img {
     height: 125px;
     width: 125px;

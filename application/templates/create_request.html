@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <form method="POST" action="" class="row g-3 col-md-8 border p-5 mt-4 mx-auto rounded">
+    <form method="POST" action="" class="row g-3 col-md-8 border mb-3 p-5 mt-4 mx-auto rounded">
         {{  form.hidden_tag() }}
         <h2 class="mb-2 text-info">{{ form_title }}</h2>
         <!--current school field-->
@@ -21,16 +21,7 @@
         <!--Teaching subjects field-->
         <div class="col-md-6">
             {{ form.subjects.label(class="form-label") }}
-            {% if form.subjects.errors %}
-                {{ form.subjects(class="form-control is-invalid") }}
-                <div class="invalid-feedback">
-                    {% for error in form.subjects.errors %}
-                        <span>{{ error }}</span>
-                    {% endfor %}
-                </div>
-            {% else %}
-                {{ form.subjects(class="form-control form-select", placeholder="Subjects") }}
-            {% endif %}    
+            {{ form.subjects(class="form-control form-select", placeholder="Subjects") }}   
         </div>
         <!-- current location field -->
         <div class="col-md-6">

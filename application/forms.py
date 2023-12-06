@@ -173,47 +173,25 @@ class RequestForm(FlaskForm):
     """
  
     sub_county = [
-    ('Teso South', 'Teso South'), 
-    ('Teso North', 'Teso North'),
-    ('Teso Central', 'Teso Central'), 
-    ('Nambale', 'Nambale'),
-    ('Matayos', 'Matayos'),
-    ('Butula', 'Butula'),
-    ('Samia', 'Samia'),
-    ('Bunyala', 'Bunyala')
+    'Teso South','Teso North', 'Teso Central', 'Nambale', 'Matayos', 'Butula', 'Samia', 'Bunyala'
 ]
     
-    Subjects = [
-    'Mathematics',
-    'English',
-    'Kiswahili',
-    'Biology',
-    'Chemistry',
-    'Physics',
-    'History and Government',
-    'Geography',
-    'Christian Religious Education (CRE)',
-    'Islamic Religious Education (IRE)',
-    'Hindu Religious Education (HRE)',
-    'Home Science',
-    'Art and Design',
-    'Agriculture',
-    'Computer Studies',
-    'Business Studies',
-    'French',
-    'German',
-    'Music',
-    'Physical Education',
-    'Life Skills',
-    'Sign Language',
-    'Braile'
+    Subjects = ['Mathematics', 'English', 'Kiswahili', 'Biology', 'Chemistry', 'Physics', 'History and Government',
+    'Geography', 'Christian Religious Education (CRE)', 'Islamic Religious Education (IRE)',
+    'Hindu Religious Education (HRE)', 'Home Science', 'Art and Design', 'Agriculture', 'Computer Studies',
+    'Business Studies', 'French', 'German', 'Music', 'Physical Education', 'Life Skills', 'Sign Language', 'Braile'
 ]
 
+    sorted_subjects = sorted(Subjects)
+    sorted_county = sorted(sub_county)
 
     school = StringField('Current School', validators=[DataRequired()])
-    subjects = SelectMultipleField('Teaching Subjects', choices=Subjects, validators=[DataRequired()])
-    county = SelectField('Current Sub-county', choices=sub_county, validators=[DataRequired()])
-    destination = SelectField('Destination Sub-county', choices=sub_county, validators=[DataRequired()])
+    subjects = SelectField('Teaching Subjects', choices=[('', 'Choose...')] + [(subject, subject) for subject in sorted_subjects],
+                           validators=[DataRequired()], render_kw={"placeholder": "Choose..."})
+    county = SelectField('Current Sub-county', choices=[('', 'Choose...')] + [(sub, sub) for sub in sorted_county],
+                         validators=[DataRequired()], render_kw={"placeholder": "Choose..."})
+    destination = SelectField('Current Sub-county', choices=[('', 'Choose...')] + [(sub, sub) for sub in sorted_county],
+                         validators=[DataRequired()], render_kw={"placeholder": "Choose..."})
     purpose = TextAreaField("What is your reason for the transfer")
     submit = SubmitField("Create Request")
      
