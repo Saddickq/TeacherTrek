@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <form method="POST" action="" class="row g-3 col-md-8 border mb-3 p-5 mt-5 mx-auto rounded">
+    <form method="POST" action="" class="row g-3 shadow col-md-8 border mb-3 p-5 mt-5 mx-auto rounded">
         {{  form.hidden_tag() }}
         <h2 class="mb-2 text-info">{{ form_title }}</h2>
         <!--current school field-->
@@ -40,7 +40,7 @@
         </div>
         <!--request button field-->
         <div class="col-12">
-            {{ form.submit(class="btn text-light btn-info") }}
+            {{ form.submit(class="btn custom-btn text-light btn-info") }}
         </div>
     </form>
 {% endblock %}
