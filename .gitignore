@@ -1,6 +1,4 @@
 application/__pycache__/
-instance/
 .idea/
-application/static/images/gray.png
 application/static/images/ea9ed9e2d02f8ea8.jpg
-application/static/images/
+.env

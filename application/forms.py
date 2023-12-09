@@ -171,9 +171,7 @@ class RequestForm(FlaskForm):
         - submit (SubmitField): Button to submit the request form.
     """
  
-    sub_county = [
-    'Teso South','Teso North', 'Teso Central', 'Nambale', 'Matayos', 'Butula', 'Samia', 'Bunyala'
-]
+    sub_county = ['Teso South','Teso North', 'Teso Central', 'Nambale', 'Matayos', 'Butula', 'Samia', 'Bunyala']
     
     Subjects = ['Mathematics', 'English', 'Kiswahili', 'Biology', 'Chemistry', 'Physics', 'History and Government',
     'Geography', 'Christian Religious Education (CRE)', 'Islamic Religious Education (IRE)',
@@ -189,7 +187,7 @@ class RequestForm(FlaskForm):
                            validators=[DataRequired()], render_kw={"placeholder": "Choose..."})
     county = SelectField('Current Sub-county', choices=[('', 'Choose...')] + [(sub, sub) for sub in sorted_county],
                          validators=[DataRequired()], render_kw={"placeholder": "Choose..."})
-    destination = SelectField('Current Sub-county', choices=[('', 'Choose...')] + [(sub, sub) for sub in sorted_county],
+    destination = SelectField('Destination Sub-county', choices=[('', 'Choose...')] + [(sub, sub) for sub in sorted_county],
                          validators=[DataRequired()], render_kw={"placeholder": "Choose..."})
     purpose = TextAreaField("What is your reason for the transfer")
     submit = SubmitField("Create Request")
@@ -206,4 +204,17 @@ class RequestForm(FlaskForm):
         """
         if not subjects:
             raise ValidationError("Please select at least one subject")
-        
+
+class RequestNewPasswordForm(FlaskForm):
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    submit = SubmitField('Request Password Reset')
+    
+    def validate_email(self, email):
+        user = User.query.filter_by(email=email.data).first()
+        if user is None:
+            raise ValidationError("There is no account with that email. You must first register")
+
+class ResetPasswordForm(FlaskForm):
+    password = PasswordField('Password', validators=[DataRequired(), Length(min=5, max=20)])
+    confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
+    submit = SubmitField('Reset Password')

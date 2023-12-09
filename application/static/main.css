@@ -70,6 +70,8 @@ li {
     width: 125px;
     margin-right: 20px;
     margin-bottom: 16px;
+    padding: 12px;
+
 }
 
 .navbar {
@@ -93,6 +95,14 @@ li {
 .offcanvas {
     background: #098a9b
 }
+.custom-btn {
+    border-radius: 20px;
+    background: linear-gradient(to right, #07cfe9, #065964);
+}
+.custom-btn:hover {
+    background: linear-gradient(to left, #07cfe9, #065964);
+
+}
 
 @media screen and (max-width:430px) {
   .landing-page {
@@ -109,7 +119,9 @@ li {
   .sideImage {
     display: none;
   } 
-
+  .col-md-6 {
+    width: 100%;
+  }
 }
 
 @media screen and (max-width:912px) {
@@ -124,9 +136,4 @@ li {
     font-size: 1rem;
     margin-top: 1rem;
   }
-  /* #login_box {
-    width: 130%;
-    margin-left: -6rem;
-  } */
-
 }

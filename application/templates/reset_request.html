@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 p-3">
+                <img src="{{ url_for('static', filename='images/padlock.jpg') }}"  style="max-width: 100%;">
+            </div>
+            <div class="col-md-6 d-flex align-items-center">
+                <form method="POST" action="" class="p-4 border rounded-button shadow row">
+                    <h2 class="mb-2 text-info">Request Password Reset</h2>
+                    {{  form.hidden_tag() }}
+                    <!--email field-->
+                    <div class="mb-4">
+                        {{ form.email.label(class="form-control-label") }}
+                        {% if form.email.errors %}
+                            {{ form.email(class="form-control is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.email.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.email(class="form-control") }}
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        {{ form.submit(class="btn btn-info text-light") }}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
