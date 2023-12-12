@@ -1,10 +1,3 @@
-/* .landing-page{
-  font-family: "Quicksand", sans-serif;
-  display: flex;
-  justify-content: space-evenly;
-  height: 90vh;
-  width: 100%;
-} */
 .landing-page{
   display: flex;
 
@@ -13,26 +6,27 @@
 .landing-page h1 {
   font-size: 4.5rem;
   color: #0f0f0f;
-  font-family: "ubuntu",sans-serif;
+  font-family: 'Verdana', 'Geneva', sans-serif;
+
 }
 .landing-page h2, h3 {
   color: #141313;
-  margin-top: 1rem;
 }
 
 .landingImage {
-  border-radius: 20px;
+  border-radius: 30px;
+  padding: 15px;
 }
 
 ul {
-    list-style-type: none; /* Remove default list styling */
+    list-style-type: none;
     padding: 0;
 }
 
 li {
     text-shadow: 4px 4px px #000000;
     color: #0e0101;
-    margin-bottom: 10px; /* Add spacing between list items */
+    margin-bottom: 10px;
 }
 .content-section {
     background: #ffffff;
@@ -44,10 +38,6 @@ li {
 
 .home-font {
     font-family: 'Verdana', 'Geneva', sans-serif;
-    /* font-family: 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif;
-    font-family: 'Roboto', 'Arial', sans-serif;
-    font-family: 'Georgia', 'Times New Roman', serif;
-    font-family: 'Cambria', 'Georgia', serif; */
 
 }
 

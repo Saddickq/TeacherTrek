@@ -1,22 +1,49 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="container-md p-0 landing-page">
-        <div class="row">
-            <div class="col-md-6">
-                <h1>TEACHER TREK</h1>
-                <h2>Every Teacher Deserves to Work Where They Are Comfortable</h2>
-                <h3>Why Choose Us?</h3>
-                <ul>
-                    <li>Our mission is to help every teacher find their perfect match.</li>
-                    <li>No child should go untaught.</li>
-                    <li>No school should miss a teacher or hold on to a teacher due to teacher transfers.</li>
-                </ul>
-                <a href="{{ url_for('register') }}" class="btn rounded-button btn-lg btn-primary px-5 me-5">Register</a>
-                <a href="{{ url_for('login') }}" class="btn rounded-button btn-lg btn-primary px-5">Login</a>        
+    <div class="grid" style="row-gap: 0;">
+        <div class="g-col-12">
+            <div class="container-md p-0 landing-page">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1 class="home-font">TEACHER TREK</h1>
+                        <h2>Every Teacher Deserves to Work Where They Are Comfortable</h2>
+                        <h3>Why Choose Us?</h3>
+                        <ul>
+                            <li>Our mission is to help every teacher find their perfect match.</li>
+                            <li>No child should go untaught.</li>
+                            <li>No school should miss a teacher or hold on to a teacher due to teacher transfers.</li>
+                        </ul>
+                        <a href="{{ url_for('register') }}" class="btn rounded-button btn-lg btn-primary px-5 me-5">Register</a>
+                        <a href="{{ url_for('login') }}" class="btn rounded-button btn-lg btn-primary px-5">Login</a>        
+                    </div>
+                    <div class="col-md-6">
+                        <img src="static/images/landing_page2.jpeg" class="landingImage" alt="teacher">
+                    </div>
+                
+                </div>
             </div>
-            <div class="col-md-6">
-                <img src="static/images/landing_page2.jpeg" class="landingImage" alt="teacher">
+        </div>
+        <div class="g-col-12">
+            <div class="container-md p-0 landing-page">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1 class="home-font">TEACHER TREK</h1>
+                        <h2>Every Teacher Deserves to Work Where They Are Comfortable</h2>
+                        <h3>Why Choose Us?</h3>
+                        <ul>
+                            <li>Our mission is to help every teacher find their perfect match.</li>
+                            <li>No child should go untaught.</li>
+                            <li>No school should miss a teacher or hold on to a teacher due to teacher transfers.</li>
+                        </ul>
+                        <a href="{{ url_for('register') }}" class="btn rounded-button btn-lg btn-primary px-5 me-5">Register</a>
+                        <a href="{{ url_for('login') }}" class="btn rounded-button btn-lg btn-primary px-5">Login</a>        
+                    </div>
+                    <div class="col-md-6">
+                        <img src="static/images/landing_page2.jpeg" class="landingImage" alt="teacher">
+                    </div>
+                
+                </div>
             </div>
         </div>
     </div>

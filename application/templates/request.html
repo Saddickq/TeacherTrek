@@ -7,10 +7,10 @@
                 <div class="card h-100">
                     <img src="{{ url_for('static', filename='images/' + request.teacher.image_profile) }}" class="card-img-top account-img" alt="User Profile Picture"  style="max-width: 90%;">
                     <div class="card-body">
-                        <h2 class="card-title">{{ request.teacher.username }}</h2>
-                        <h4 class="card-text">{{ request.teacher.username }} is from {{ request.county }}.<br>
-                            Going to {{ request.destination }}</h4>
-                        <p class="border-top">{{ request.purpose }}</p>
+                        <h2 class="text-info home-font">{{ request.teacher.username }}</h2>
+                        <h5 class="card-text text-secondary">{{ request.teacher.username }} is from {{ request.county }}.<br>
+                            Going to {{ request.destination }}</h5>
+                        <p class="border-top text-secondary">{{ request.purpose }}</p>
                         {% if request.teacher == current_user %}
                             <div class="d-grid gap-4 d-md-flex justify-content-md-end">
                                 <a class="btn btn-info text-light" href="{{ url_for('update_request', request_id=request.id) }}">Update</a>
