@@ -171,7 +171,10 @@ class RequestForm(FlaskForm):
         - submit (SubmitField): Button to submit the request form.
     """
  
-    sub_county = ['Teso South','Teso North', 'Teso Central', 'Nambale', 'Matayos', 'Butula', 'Samia', 'Bunyala']
+    sub_county = ['Teso South','Teso North', 'Teso Central', 'Nambale', 'Matayos', 'Butula', 'Samia', 'Bunyala',
+                  'Dagoretti North', 'Dagoretti South', 'Embakasi Central', 'Embakasi East', 'Embakasi North',
+                  'Embakasi South', 'Embakasi West', 'Kamukunji', 'Kasarani', 'Kibra', 'Lang’ata', 'Makadara',
+                  'Mathare', 'Roysambu', 'Ruaraka', 'Starehe', 'Westlands']
     
     Subjects = ['Mathematics', 'English', 'Kiswahili', 'Biology', 'Chemistry', 'Physics', 'History and Government',
     'Geography', 'Christian Religious Education (CRE)', 'Islamic Religious Education (IRE)',

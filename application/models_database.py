@@ -38,11 +38,25 @@ class User(db.Model, UserMixin):
     requests = db.relationship('Request', backref='teacher', lazy=True)
     
     def get_reset_token(self, expires_sec=1800):
+        """
+        Generate a reset token for the current user.
+        Parameters:
+            expires_sec (int): The number of seconds until the reset token expires. Default is 1800 seconds.
+        Returns:
+            str: The reset token as a string.
+        """
         s = Serialiser(app.config['SECRET_KEY'], expires_sec)
         return s.dumps({"user_id": self.id}).decode('utf-8')
     
     @staticmethod
     def verify_token(token):
+        """
+        Verify a token and return the corresponding user.
+        Parameters:
+            token (str): The token to be verified.
+        Returns:
+            User or None: The corresponding user if the token is valid, or None if the token is invalid.
+        """
         s = Serialiser(app.config['SECRET_KEY'])
         try:
             user_id = s.loads(token)['user_id']

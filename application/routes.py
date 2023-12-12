@@ -292,10 +292,17 @@ def delete_request(request_id):
     return redirect(url_for('home'))
 
 def send_email_message(user):
+    """
+    Sends an email message to the specified user.
+    Parameters:
+        user (User): The user to send the email to.
+    Returns:
+        None
+    """
     mail = Mail(app)
     token = user.get_reset_token()
     msg_title = "Password Reset Request"
-    msg = Message(msg_title, sender='teachertrek@demo.com', recipients=[user.email])
+    msg = Message(msg_title, sender='teachertrek2023@gmail.com', recipients=[user.email])
     msg.body = f'''To reset your password, visit the link below: {url_for('reset_token', token=token, _external=True)}
     
 If you did not request for a password reset please ignore this email
