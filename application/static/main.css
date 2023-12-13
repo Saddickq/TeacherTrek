@@ -29,8 +29,14 @@
 
 }
 .motto {
-    font-size: xx-large;
+    font-size: x-large;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.foota {
+    background-color: #0e7d8be7;
+    text-align: center;
+
 }
 
 ul {
@@ -75,8 +81,6 @@ li {
     margin-right: 20px;
     margin-bottom: 6px;
     margin-left: 1px;
-
-
 }
 
 .navbar {
@@ -153,7 +157,13 @@ li {
     margin-right: 15px;
     margin-bottom: 8px;
     margin-left: 0.8rem;
-
+  }
+  .custom-btn {
+    font-size: 14px;
+    padding: 10px; 
+  }
+  .motto {
+    font-size: large;
   }
 }
 

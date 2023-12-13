@@ -114,6 +114,7 @@ def login():
 
 
 @app.route('/logout')
+@login_required
 def logout():
     """
     Handle user logout.
@@ -137,7 +138,7 @@ def save_profile_picture(form_picture):
     random = secrets.token_hex(8)
     _, file_ext = os.path.splitext(form_picture.filename)
     picture_file_name = random + file_ext
-    picture_path = os.path.join(app.root_path, 'static/images', picture_file_name)
+    picture_path = os.path.join(app.root_path, 'static/images/profile_pics/', picture_file_name)
 
     output_size = (135, 135)
     img = Image.open(form_picture)
@@ -179,7 +180,7 @@ def account():
         form.email.data = current_user.email
 
     # Construct the URL for the user's profile picture
-    profile_pic = url_for('static', filename='images/' + current_user.image_profile)
+    profile_pic = url_for('static', filename='images/profile_pics/' + current_user.image_profile)
 
     # Render the 'account.html' template with relevant context variables
     return render_template('account.html', title='Account', image_file=profile_pic, form=form)
@@ -255,7 +256,7 @@ def update_request(request_id):
     form = RequestForm()
     if form.validate_on_submit():
         req.school = form.school.data
-        req.subjects = ', '.join(form.subjects.data) # Convert the list of subjects to a comma-separated string
+        req.subjects = form.subjects.data
         req.county = form.county.data
         req.destination = form.destination.data
         req.purpose = form.purpose.data
