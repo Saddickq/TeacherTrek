@@ -26,10 +26,6 @@
                     <a href="{{ url_for('logout') }}" class="btn p-0 text-light me-3 ms-auto">Logout
                         <img src="/static/images/login.png" alt="Logout" class="img-fluid" style="max-height: 50px; max-height: 40px;">
                     </a>
-                {% else %}
-                    <a href="{{ url_for('login') }}" class="btn text-light p-0 me-3 ms-auto">Login
-                        <img src="/static/images/logout.png" alt="Login" class="img-fluid" style="max-width: 50px; max-height: 40px;">
-                    </a>
                 {% endif %}
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"

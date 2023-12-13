@@ -1,16 +1,16 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="container">
-        <div class="media d-flex mt-4 flex-row home-section">
-            <img src="{{ image_file }}" alt="Profile Image" class="rounded-circle home-img mr-3">
-            <div class="media-body">
-                <h1 class="home-font text-light">Welcome {{ current_user.username }}</h1>
-                <h5 class="text-light">Your transfer requests and matched transfer requests will appear here :)</h5>
-            </div>
+    <div class="media d-flex mt-3 home-section">
+        <img src="{{ image_file }}" alt="Profile Image" class="rounded-circle home-img mr-3">
+        <div class="media-body">
+            <h1 class="home-font text-light">Welcome {{ current_user.username }}</h1>
+            <h5 class="msg text-light">Your transfer requests and matched transfer requests will appear here :)</h5>
         </div>
+    </div>
+    <div class="container">
         {% if user_request %}
-            <div class="row row-cols-1 row-cols-md-2 g-3 mt-3">
+            <div class="row row-cols-1 row-cols-md-2 g-3 mt-2">
                 <div class="col">
                     <div class="card h-90">
                         <img src="{{ url_for('static', filename='images/' + user_request.teacher.image_profile) }}" class="card-img-top account-img" alt="User Profile Picture"  style="max-width: 90%;">
@@ -30,30 +30,29 @@
                     </div>
                 </div>
             </div>
-            {% else %}
-                <div class="d-flex flex-column align-items-center p-5 mt-5 justify-content-center">
-                    <div class="text-center mb-1">
-                        <small class="text-muted"><em>Nothing here. Click this button to make a transfer request</em></small>
-                    </div>
-                    <a class="btn custom-btn shadow btn-lg px-4 text-light" href="{{ url_for('create_request') }}">Create</a>
+        {% else %}
+            <div class="d-flex flex-column align-items-center p-5 mt-5 justify-content-center">
+                <div class="text-center mb-1">
+                    <small class="text-muted"><em>Nothing here. Click this button to make a transfer request</em></small>
                 </div>
-            {% endif %}
-            {% if matches %}
-                {% for match in matches %}
-                    <div class="row row-cols-1 w-20 row-cols-md-2 g-4 mt-4">
-                        <div class="col">
-                            <div class="card h-100">
-                                <img src="{{ url_for('static', filename='images/' + match.teacher.image_profile) }}" class="card-img-top account-img" alt="User Profile Picture"  style="max-width: 90%;">
-                                <div class="card-body">
-                                    <h2><a class="card-title" href="{{ url_for('show_request', request_id=match.id) }}">{{ match.teacher.username }}</a></h2>
-                                    <p class="card-text">{{ match.teacher.username }} is from {{ match.county }}.<br>
-                                        Teaching Combination: {{ match.subjects }}<br>
-                                        current school: {{ match.school }}<br>
-                                        Going to {{ match.destination }}</p>
-                                </div>
-                                <div class="card-footer">
-                                    <small class="text-body-secondary">Made on {{ match.request_made_on.strftime('%B, %d %Y') }}</small>
-                                </div>
+                <a class="btn custom-btn btn-info shadow btn-lg px-4 text-light" href="{{ url_for('create_request') }}">Create</a>
+            </div>
+        {% endif %}
+        {% if matches %}
+            {% for match in matches %}
+                <div class="row row-cols-1 w-20 row-cols-md-2 g-4 mt-4">
+                    <div class="col">
+                        <div class="card h-100">
+                            <img src="{{ url_for('static', filename='images/' + match.teacher.image_profile) }}" class="card-img-top account-img" alt="User Profile Picture"  style="max-width: 90%;">
+                            <div class="card-body">
+                                <h2><a class="card-title" href="{{ url_for('show_request', request_id=match.id) }}">{{ match.teacher.username }}</a></h2>
+                                <p class="card-text">{{ match.teacher.username }} is from {{ match.county }}.<br>
+                                    Teaching Combination: {{ match.subjects }}<br>
+                                    current school: {{ match.school }}<br>
+                                    Going to {{ match.destination }}</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-body-secondary">Made on {{ match.request_made_on.strftime('%B, %d %Y') }}</small>
                             </div>
                         </div>
                     </div>

@@ -16,6 +16,11 @@
 .landingImage {
   border-radius: 30px;
   padding: 15px;
+  
+}
+
+.email-field {
+  border-radius: 20px;
 }
 
 .paragraphs {
@@ -44,7 +49,6 @@ li {
 
 .home-font {
     font-family: 'Verdana', 'Geneva', sans-serif;
-
 }
 
 .home-section {
@@ -62,11 +66,12 @@ li {
 }
 
 .account-img {
-    height: 125px;
-    width: 125px;
+    height: 110px;
+    width: 110px;
     margin-right: 20px;
-    margin-bottom: 16px;
-    padding: 12px;
+    margin-bottom: 6px;
+    margin-left: 1px;
+
 
 }
 
@@ -97,7 +102,14 @@ li {
 }
 .custom-btn:hover {
     background: linear-gradient(to left, #07cfe9, #065964);
+}
 
+.account-bg {
+    background: linear-gradient(to left, #07cfe9, #065964);
+}
+
+.card-img-top {
+    margin: 10px;
 }
 
 @media screen and (max-width:430px) {
@@ -117,6 +129,26 @@ li {
   } 
   .col-md-6 {
     width: 100%;
+  }
+  .home-img {
+    height: 65px;
+    width: 65px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+  }
+  .home-font {
+    font-size: larger;
+  }
+  .msg {
+    font-size: medium;
+  }
+  .account-img {
+    height: 75px;
+    width: 75px;
+    margin-right: 15px;
+    margin-bottom: 8px;
+    margin-left: -1rem;
+
   }
 }
 
