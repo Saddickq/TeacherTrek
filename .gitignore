@@ -2,3 +2,4 @@ application/__pycache__/
 .idea/
 application/static/images/ea9ed9e2d02f8ea8.jpg
 .env
+__pycache__/
