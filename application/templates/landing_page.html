@@ -6,16 +6,17 @@
             <div class="container-md p-0 landing-page">
                 <div class="row">
                     <div class="col-md-6">
-                        <h1 class="home-font">TEACHER TREK</h1>
-                        <h2>Every Teacher Deserves to Work Where They Are Comfortable</h2>
-                        
+                        <h1 class="home-font text-info mb-3">TEACHER TREK</h1>
+                        <p class="motto">Every Teacher Deserves to Work Where They Are Comfortable</p>
                         <ul>
                             <li>Our mission is to help every teacher find their perfect match.</li>
                             <li>No child should go untaught.</li>
                             <li>No school should miss a teacher or hold on to a teacher due to teacher transfers.</li>
                         </ul>
-                        <a href="{{ url_for('register') }}" class="btn custom-btn shadow btn-lg btn-primary px-5">Register</a>
-                        <a href="{{ url_for('login') }}" class="btn custom-btn shadow btn-lg btn-primary px-5 m-4">Login</a>        
+                        <div class="d-flex align-items-center">
+                            <a href="{{ url_for('register') }}" class="btn custom-btn shadow btn-lg btn-primary px-5">Register</a>
+                            <a href="{{ url_for('login') }}" class="btn custom-btn shadow btn-lg btn-primary px-5 m-4">Login</a>        
+                        </div>
                     </div>
                     <div class="col-md-6">
                         <img src="static/images/landing_page2.jpeg" class="landingImage" alt="teacher">

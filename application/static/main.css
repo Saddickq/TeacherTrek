@@ -28,6 +28,10 @@
     font-family: Arial, Helvetica, sans-serif;
 
 }
+.motto {
+    font-size: xx-large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 
 ul {
     list-style-type: none;
@@ -41,7 +45,7 @@ li {
 }
 .content-section {
     background: #ffffff;
-    padding: 10px 30px;
+    padding: 5px 15px;
     border: 1px solid #dddddd;
     border-radius: 3px;
     margin-bottom: 10px;
@@ -135,6 +139,7 @@ li {
     width: 65px;
     margin-right: 10px;
     margin-bottom: 5px;
+    margin-left: -5px;
   }
   .home-font {
     font-size: larger;
@@ -147,7 +152,7 @@ li {
     width: 75px;
     margin-right: 15px;
     margin-bottom: 8px;
-    margin-left: -1rem;
+    margin-left: 0.8rem;
 
   }
 }

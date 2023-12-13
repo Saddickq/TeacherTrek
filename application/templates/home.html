@@ -17,8 +17,6 @@
                         <div class="card-body">
                             <h2 class="text-info home-font">{{ user_request.teacher.username }}</h2>
                             <p class="card-text text-secondary">{{ user_request.teacher.username }} is from {{ user_request.county }}.<br>
-                                Teaching Combination: {{ user_request.subjects }}<br>
-                                current school: {{ user_request.school }}<br>
                                 Going to {{ user_request.destination }}</p>
                             <div class="ms-auto">
                                 <a class="btn btn-info text-light" href="{{ url_for('show_request', request_id=user_request.id) }}">View</a>

@@ -8,7 +8,9 @@
                     <img src="{{ url_for('static', filename='images/' + request.teacher.image_profile) }}" class="card-img-top account-img" alt="User Profile Picture"  style="max-width: 90%;">
                     <div class="card-body">
                         <h2 class="text-info home-font">{{ request.teacher.username }}</h2>
-                        <h5 class="card-text text-secondary">{{ request.teacher.username }} is from {{ request.county }}.<br>
+                        <h5 class="card-text paragraphs text-secondary">{{ request.teacher.username }} is from {{ request.county }}.<br>
+                            Teaching Subject: {{ request.subjects }}<br>
+                            Current school: {{ request.school }}<br>
                             Going to {{ request.destination }}</h5>
                         <p class="border-top text-secondary">{{ request.purpose }}</p>
                         {% if request.teacher == current_user %}
