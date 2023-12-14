@@ -1,14 +1,13 @@
 .landing-page{
   display: flex;
-
 }
 
 .landing-page h1 {
   font-size: 4.5rem;
   color: #0f0f0f;
   font-family: 'Verdana', 'Geneva', sans-serif;
-
 }
+
 .landing-page h2, h3 {
   color: #141313;
 }
@@ -16,7 +15,6 @@
 .landingImage {
   border-radius: 30px;
   padding: 15px;
-  
 }
 
 .email-field {
@@ -26,22 +24,25 @@
 .paragraphs {
     font-size: large;
     font-family: Arial, Helvetica, sans-serif;
-
 }
+
 .motto {
     font-size: x-large;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.foota {
-    background-color: #0e7d8be7;
-    text-align: center;
-
+.overall {
+    padding-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
+.foota {
+    background-color: #26808be7;
+    text-align: center;
+    display: flex;
+    margin-top: auto;
 }
 
 li {
@@ -114,11 +115,13 @@ li {
 
 .account-bg {
     background: linear-gradient(to left, #07cfe9, #065964);
+    padding: 1rem;
 }
 
 .card-img-top {
     margin: 10px;
 }
+
 
 @media screen and (max-width:430px) {
   .landing-page {
@@ -149,15 +152,17 @@ li {
     font-size: larger;
   }
   .msg {
-    font-size: medium;
+    font-size: small;
   }
   .account-img {
-    height: 75px;
-    width: 75px;
+    height: 25%;
+    width: 25%;
     margin-right: 15px;
-    margin-bottom: 8px;
-    margin-left: 0.8rem;
   }
+  .account-bg {
+    padding: 1rem;
+  }
+
   .custom-btn {
     font-size: 14px;
     padding: 10px; 
