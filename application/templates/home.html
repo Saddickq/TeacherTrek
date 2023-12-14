@@ -13,7 +13,7 @@
             <div class="row row-cols-1 row-cols-md-2 g-3 mt-2">
                 <div class="col">
                     <div class="card h-90">
-                        <img src="{{ url_for('static', filename='images/' + user_request.teacher.image_profile) }}" class="card-img-top account-img" alt="User Profile Picture"  style="max-width: 90%;">
+                        <img src="{{ url_for('static', filename='images/profile_pics/'+ user_request.teacher.image_profile) }}" class="card-img-top account-img" alt="User Profile Picture"  style="max-width: 90%;">
                         <div class="card-body">
                             <h2 class="text-info home-font">{{ user_request.teacher.username }}</h2>
                             <p class="card-text text-secondary">{{ user_request.teacher.username }} is from {{ user_request.county }}.<br>
@@ -41,7 +41,7 @@
                 <div class="row row-cols-1 w-20 row-cols-md-2 g-4 mt-4">
                     <div class="col">
                         <div class="card h-100">
-                            <img src="{{ url_for('static', filename='images/' + match.teacher.image_profile) }}" class="card-img-top account-img" alt="User Profile Picture"  style="max-width: 90%;">
+                            <img src="{{ url_for('static', filename='images/profile_pics/' + match.teacher.image_profile) }}" class="card-img-top account-img" alt="User Profile Picture"  style="max-width: 90%;">
                             <div class="card-body">
                                 <h2><a class="card-title" href="{{ url_for('show_request', request_id=match.id) }}">{{ match.teacher.username }}</a></h2>
                                 <p class="card-text">{{ match.teacher.username }} is from {{ match.county }}.<br>

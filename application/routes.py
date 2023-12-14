@@ -44,7 +44,7 @@ def home():
     if current_user.is_authenticated:
         match = get_match_county()
         user_request = Request.query.filter_by(teacher_id=current_user.id).first()
-        profile_pic = url_for('static', filename='images/' + current_user.image_profile)
+        profile_pic = url_for('static', filename='images/profile_pics/' + current_user.image_profile)
         return render_template('home.html', title='home', image_file=profile_pic, matches=match, user_request=user_request)
     else:
         return redirect(url_for('login'))

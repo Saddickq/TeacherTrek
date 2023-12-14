@@ -5,7 +5,7 @@
         <div class="row row-cols-1 w-20 row-cols-md-2 g-4 mt-4">
             <div class="col">
                 <div class="card h-100">
-                    <img src="{{ url_for('static', filename='images/' + request.teacher.image_profile) }}" class="card-img-top account-img" alt="User Profile Picture"  style="max-width: 90%;">
+                    <img src="{{ url_for('static', filename='images/profile_pics/' + request.teacher.image_profile) }}" class="card-img-top account-img" alt="User Profile Picture"  style="max-width: 90%;">
                     <div class="card-body">
                         <h2 class="text-info home-font">{{ request.teacher.username }}</h2>
                         <h5 class="card-text paragraphs text-secondary">{{ request.teacher.username }} is from {{ request.county }}.<br>
